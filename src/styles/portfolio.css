@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600&family=Playfair+Display:ital,wght=0,700;1,400&display=swap');
 
 * {
     margin: 0;
@@ -153,8 +153,7 @@ body {
     overflow: hidden;
     white-space: nowrap;
     border-right: 2px solid var(--accent-orange);
-    animation: 
-        caretFlash 0.75s step-end infinite;
+    animation: caretFlash 0.75s step-end infinite;
 }
 
 /* --- Hero Grid Engine --- */
@@ -228,6 +227,7 @@ body {
 
 .action-buttons {
     display: flex;
+    flex-wrap: wrap; /* Prevents button line breakage on small screens */
     gap: 15px;
 }
 
@@ -286,7 +286,6 @@ body {
 }
 
 .metric-card:hover {
-    /* Subtle 3D lift out towards user screen orientation axis */
     transform: translateY(-5px) rotateX(6deg) rotateY(-6deg) translateZ(15px);
     border-color: rgba(255, 90, 34, 0.25);
     box-shadow: var(--layer-shadow), var(--hover-glow);
@@ -303,7 +302,7 @@ body {
 }
 
 .metric-card:hover .metric-number {
-    transform: translateZ(10px); /* Separates numbers from card plane on 3D space axis */
+    transform: translateZ(10px);
 }
 
 .metric-label {
@@ -400,14 +399,43 @@ body {
     transform: scale(0.9);
 }
 
+/* ==========================================
+   THE DEFINTIVE MOBILE ENGINE DISPLAYS
+   ========================================== */
+
+/* Tablet & Landscape Configurations */
 @media (max-width: 1024px) {
     .sidebar { left: -100%; transition: left 0.4s ease; width: 100%; max-width: 300px; }
     .sidebar.active { left: 0; }
     .menu-burger { display: block; }
-    .main-wrapper { margin-left: 0; width: 100%; padding: 80px 20px; }
+    .main-wrapper { margin-left: 0; width: 100%; padding: 60px 24px; }
     .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-    .metrics-stack { flex-direction: row; }
+    .metrics-stack { flex-direction: row; width: 100%; }
     .metric-card { flex: 1; }
     .metric-card:hover { transform: translateY(-5px) translateZ(5px); }
     .interactive-box:hover { transform: translateY(-5px) translateZ(5px); }
+}
+
+/* Core Phone Displays (Fixes text scaling errors) */
+@media (max-width: 768px) {
+    .giant-title { font-size: 3rem; }
+    .page-header h2 { font-size: 2.2rem; }
+    .main-wrapper { padding: 80px 16px 40px 16px; }
+}
+
+/* Compact Smartphones (Ensures items fit the grid exactly) */
+@media (max-width: 480px) {
+    .giant-title { font-size: 2.4rem; }
+    .role-subtitles { font-size: 0.95rem; }
+    .hero-description { font-size: 0.95rem; }
+    
+    /* Converts action buttons to full width for easier finger tapping */
+    .action-buttons { flex-direction: column; gap: 10px; width: 100%; }
+    .btn { width: 100%; justify-content: center; padding: 12px 20px; }
+    
+    /* Stacks metric boxes vertically to avoid squeezed columns */
+    .metrics-stack { flex-direction: column; gap: 15px; }
+    
+    /* Typewriter spacing constraint override */
+    .typewriter-text { white-space: normal; border-right: none; }
 }
