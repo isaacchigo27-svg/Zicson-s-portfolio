@@ -5,8 +5,8 @@ export default function Sidebar({ isOpen, toggleMenu }) {
   return (
     <aside className={`sidebar ${isOpen ? 'active' : ''}`}>
       <div className="brand-area">
-        <div class="logo">Zicson</div>
-        <div class="subtitle">Digital Solutions</div>
+        <div className="logo">Zicson</div>
+        <div className="subtitle">Digital Solutions</div>
       </div>
 
       <ul className="nav-menu">
@@ -38,9 +38,25 @@ export default function Sidebar({ isOpen, toggleMenu }) {
       </ul>
 
       <div className="sidebar-footer">
-        <a href="tel:+2348137528741"><i className="fa-solid fa-phone"></i> +234 704 137 4919</a>
-        {/* <a href="mailto:isaac@zicsonenterprise.com"><i className="fa-solid fa-envelope"></i> isaac@zicson.com</a> */}
-        <NavLink to="/contact" className="nav-link" onClick={toggleMenu}><i className="fa-solid fa-comments"></i> Contact Panel</NavLink>
+        {/* Direct Call Setup */}
+        <a href="tel:+2347041374919">
+          <i className="fa-solid fa-phone"></i> +234 704 137 4919
+        </a>
+        
+        {/* WhatsApp Instant Messaging Link */}
+        <a href="https://wa.me/2347041374919" target="_blank" rel="noreferrer">
+          <i className="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+
+        {/* GitHub Repository Connection Link */}
+        <a href="https://github.com/isaacchigo27-svg" target="_blank" rel="noreferrer">
+          <i className="fa-brands fa-github"></i> GitHub
+        </a>
+        
+        {/* Internal Navigation Routing Link */}
+        <NavLink to="/contact" className="nav-link" style={{ padding: 0 }} onClick={toggleMenu}>
+          <i className="fa-solid fa-comments"></i> Contact Panel
+        </NavLink>
       </div>
     </aside>
   );
